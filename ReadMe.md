@@ -4,7 +4,13 @@
 
   - React-vite
   - ReactJs
-  - Material UI
+  - Material UI and MUI icons
+  - redux, redux-thunk
+  - react-router-dom
+  - react hook forms
+  - yup for validations
+  - momnet for date formatting
+  - axios
 
 - Backend
   - MERN stack
@@ -13,3 +19,7 @@
   - express
   - mongoose
   - morgan
+  - nodemon
+  - MongoDb
+  - global error management
+  - util for catch async

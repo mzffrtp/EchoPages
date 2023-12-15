@@ -3,7 +3,8 @@ import bodyParser from "body-parser";
 import mongoose from "mongoose";
 import cors from "cors"
 import morgan from "morgan";
-import DB from "./config/Db.js"
+import DB from "./config/Db.js";
+import postRoutes from "./routes/postsRoute.js"
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
@@ -28,8 +29,13 @@ app.use((err, req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-    res.send(" server is alive, contunie coding !...")
+    res.json({
+        author: "mazzy :)",
+        message: "Happy coding!"
+    })
 })
+
+app.use("/posts", postRoutes)
 
 const port = process.env.PORT || 4000
 app.listen(port, () => [
