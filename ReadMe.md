@@ -5,7 +5,7 @@
   - React-vite
   - ReactJs
   - Material UI and MUI icons
-  - redux, redux-thunk
+  - redux, redux-toolkit with thunk
   - react-router-dom
   - react hook forms
   - yup for validations

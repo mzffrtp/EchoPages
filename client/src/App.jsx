@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { AppBar, Button, Container, CssBaseline, IconButton, Toolbar, Typography } from "@mui/material";
+import PenIcon from "@mui/icons-material/Create";
+import { styled } from '@mui/material/styles';
+
+const MyStyledContainer = styled('div')(({ theme }) => ({
+  flexGrow: 1,
+  /* Your styles here */
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1
+  },
+  container: {
+    marginTop: theme.spacing(2)
+  }
+}));
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <CssBaseline />
+      <Container>
+        <AppBar position="static" sx={{ bgcolor: "Menu" }} elevation={0}>
+          <Toolbar>
+            <IconButton edge="start" color="inherit">
+              {/* Your Icon */}
+            </IconButton>
+            <Typography variant="h6" color="secondary" sx={{ letterSpacing: 6, flexGrow: 1 }} >
+              <a href="http://localhost:5173/posts">EchoPages</a>
+            </Typography>
+            <Button color="primary" variant="outlined" startIcon={<PenIcon />}>
+              New Echo
+            </Button>
+          </Toolbar>
+        </AppBar>
+      </Container>
     </>
   )
 }
 
-export default App
+export default App;
