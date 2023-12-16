@@ -11,6 +11,7 @@
   - yup for validations
   - momnet for date formatting
   - axios
+  - file-base64 for image downloading
 
 - Backend
   - MERN stack
