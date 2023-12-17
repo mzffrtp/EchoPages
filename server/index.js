@@ -5,11 +5,12 @@ import cors from "cors"
 import morgan from "morgan";
 import DB from "./config/Db.js";
 import postRoutes from "./routes/postsRoute.js"
+import corsOptions from "./utils/corsOptions.js";
 
 const app = express();
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }))
-app.use(cors());
+app.use(cors(corsOptions));
 
 //!middlewares
 app.use(morgan("dev"))
@@ -35,7 +36,7 @@ app.get("/", (req, res) => {
     })
 })
 
-app.use("/posts", postRoutes)
+app.use("/post", postRoutes)
 
 const port = process.env.PORT || 4000
 app.listen(port, () => [

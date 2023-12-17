@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FileBase64 from "react-file-base64";
 import { useDispatch } from "react-redux";
+import { createPost } from '../redux/postSlice';
 
 const MyStyledContainer = styled('div')(({ theme }) => ({
     paper: {
@@ -40,7 +41,7 @@ const AddPostForm = ({ open, handleClose }) => {
     });
 
     const handleFormSubmit = (data) => {
-        console.log("form data-->", { ...data, file });
+        dispatch(createPost({ ...data, image: file }))
         clearForm();
     };
 
@@ -52,7 +53,9 @@ const AddPostForm = ({ open, handleClose }) => {
                     Please fill in the form to add a new echo!
                 </DialogContentText>
                 <MyStyledContainer>
-                    <form onSubmit={handleSubmit(handleFormSubmit)()} noValidate autoComplete='off' >
+                    <form
+                        onSubmit={handleSubmit(handleFormSubmit)}
+                        noValidate autoComplete='off' >
                         <TextField
                             id="title"
                             label="Title"

@@ -1,10 +1,9 @@
+// store.js
 import { configureStore } from '@reduxjs/toolkit';
-import postsReducer from "./postSlicer"
+import rootReducer from './rootReducer';
 
 const store = configureStore({
-    reducer: {
-        posts: postsReducer,
-    },
+    reducer: rootReducer
 });
 
 export default store;

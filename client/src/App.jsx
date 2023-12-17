@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AppBar, Button, Container, CssBaseline, Grid, IconButton, Toolbar, Typography } from "@mui/material";
 import PenIcon from "@mui/icons-material/Create";
 import { styled } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PostList from "./components/PostList";
 import AddPostForm from "./components/AddPostForm"
+import HomePage from "./pages/HomePage";
+import { useDispatch } from "react-redux";
+import { getPosts } from "./redux/postSlice";
 
 const MyStyledContainer = styled('div')(({ theme }) => ({
   flexGrow: 1,
@@ -20,6 +23,7 @@ const MyStyledContainer = styled('div')(({ theme }) => ({
 }));
 
 function App() {
+  const dispatch = useDispatch()
   const [open, setOpen] = useState(false)
 
   const handleOpen = () => {
@@ -28,6 +32,12 @@ function App() {
   const handleClose = () => {
     setOpen(false)
   };
+
+  useEffect(() => {
+    dispatch(getPosts())
+  }, [dispatch])
+
+
   return (
     <>
       <CssBaseline />
@@ -35,7 +45,6 @@ function App() {
         <AppBar position="static" sx={{ bgcolor: "Menu" }} elevation={0}>
           <Toolbar>
             <IconButton edge="start" color="inherit">
-              {/* Your Icon */}
             </IconButton>
             <Typography variant="h6" color="secondary" sx={{ letterSpacing: 6, flexGrow: 1 }} >
               <a href="http://localhost:5173/posts">EchoPages</a>
@@ -53,7 +62,8 @@ function App() {
           <Grid item xs={12}>
             <BrowserRouter>
               <Routes>
-                <Route exact path="/posts" element={<PostList />} />
+                <Route exact path="/" element={<HomePage />} />
+                <Route exact path="/post" element={<PostList />} />
               </Routes>
             </BrowserRouter>
           </Grid>
