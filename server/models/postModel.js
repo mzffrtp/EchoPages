@@ -3,7 +3,7 @@ import nongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
     title: String,
-    subtile: String,
+    subtitle: String,
     content: String,
     tag: String,
     image: String,
